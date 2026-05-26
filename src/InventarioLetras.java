@@ -87,3 +87,57 @@ public class InventarioLetras {
 
         return resultado;
     }
+
+    // Obtener cantidad de letra
+    public int get(char letra) {
+
+        letra = Character.toLowerCase(letra);
+
+        if (letra < 'a' || letra > 'z') {
+
+            throw new IllegalArgumentException("Letra inválida");
+        }
+
+        return letras[letra - 'a'];
+    }
+
+    // Modificar cantidad
+    public void set(char letra, int valor) {
+
+        letra = Character.toLowerCase(letra);
+
+        if (letra < 'a' || letra > 'z' || valor < 0) {
+
+            throw new IllegalArgumentException("Datos incorrectos");
+        }
+
+        int posicion = letra - 'a';
+
+        total -= letras[posicion];
+
+        if (letras[posicion] == 0 && valor > 0) {
+
+            distintas++;
+        }
+
+        if (letras[posicion] > 0 && valor == 0) {
+
+            distintas--;
+        }
+
+        letras[posicion] = valor;
+
+        total += valor;
+    }
+
+    // Cantidad total de letras
+    public int size() {
+
+        return total;
+    }
+
+    // Verificar si está vacío
+    public boolean isEmpty() {
+
+        return distintas == 0;
+    }
