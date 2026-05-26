@@ -61,3 +61,29 @@ public class InventarioLetras {
 
         return (char)(nuevaPosicion + 'a');
     }
+
+    // Encriptar palabra
+    public String encriptarPalabra(String palabra, int desplazamiento) {
+
+        String resultado = "";
+
+        for (int i = 0; i < palabra.length(); i++) {
+
+            resultado += encriptarCesar(palabra.charAt(i));
+        }
+
+        return resultado;
+    }
+
+    // Desencriptar palabra
+    public String desencriptarPalabra(String palabra, int desplazamiento) {
+
+        String resultado = "";
+
+        for (int i = 0; i < palabra.length(); i++) {
+
+            resultado += desencriptarCesar(palabra.charAt(i));
+        }
+
+        return resultado;
+    }
