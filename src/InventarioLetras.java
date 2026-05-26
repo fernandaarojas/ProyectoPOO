@@ -1,3 +1,63 @@
 public class InventarioLetras {
-}
-//Probando
+
+    private int[] letras;
+    private int total;
+    private int distintas;
+
+    // Constructor
+    public InventarioLetras(String texto) {
+
+        letras = new int[26];
+        total = 0;
+        distintas = 0;
+
+        texto = texto.toLowerCase();
+
+        for (int i = 0; i < texto.length(); i++) {
+
+            char caracter = texto.charAt(i);
+
+            if (caracter >= 'a' && caracter <= 'z') {
+
+                int posicion = caracter - 'a';
+
+                if (letras[posicion] == 0) {
+
+                    distintas++;
+                }
+
+                letras[posicion]++;
+                total++;
+            }
+        }
+    }
+
+    // Encriptar letra
+    public char encriptarCesar(char letra) {
+
+        letra = Character.toLowerCase(letra);
+
+        if (letra < 'a' || letra > 'z') {
+
+            return letra;
+        }
+
+        int nuevaPosicion = ((letra - 'a') + 3) % 26;
+
+        return (char)(nuevaPosicion + 'a');
+    }
+
+    // Desencriptar letra
+    public char desencriptarCesar(char letra) {
+
+        letra = Character.toLowerCase(letra);
+
+        if (letra < 'a' || letra > 'z') {
+
+            return letra;
+        }
+
+        int nuevaPosicion = ((letra - 'a') - 3 + 26) % 26;
+
+        return (char)(nuevaPosicion + 'a');
+    }
