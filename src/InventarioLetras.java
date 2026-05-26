@@ -141,3 +141,21 @@ public class InventarioLetras {
 
         return distintas == 0;
     }
+
+    // Mostrar inventario
+    public String toString() {
+
+        String resultado = "[";
+
+        for (int i = 0; i < letras.length; i++) {
+
+            for (int j = 0; j < letras[i]; j++) {
+
+                resultado += (char)(i + 'a');
+            }
+        }
+
+        resultado += "]";
+
+        return resultado;
+    }
