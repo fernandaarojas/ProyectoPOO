@@ -159,3 +159,71 @@ public class InventarioLetras {
 
         return resultado;
     }
+
+    // Sumar inventarios
+    public InventarioLetras add(InventarioLetras otro) {
+
+        InventarioLetras nuevo = new InventarioLetras("");
+
+        for (int i = 0; i < letras.length; i++) {
+
+            nuevo.letras[i] = this.letras[i] + otro.letras[i];
+
+            if (nuevo.letras[i] > 0) {
+
+                nuevo.distintas++;
+            }
+
+            nuevo.total += nuevo.letras[i];
+        }
+
+        return nuevo;
+    }
+
+    // Multiplicar inventario
+    public InventarioLetras amplifies(int numero) {
+
+        InventarioLetras nuevo = new InventarioLetras("");
+
+        for (int i = 0; i < letras.length; i++) {
+
+            nuevo.letras[i] = this.letras[i] * numero;
+
+            if (nuevo.letras[i] > 0) {
+
+                nuevo.distintas++;
+            }
+
+            nuevo.total += nuevo.letras[i];
+        }
+
+        return nuevo;
+    }
+
+    // Restar inventarios
+    public InventarioLetras subtract(InventarioLetras otro) {
+
+        InventarioLetras nuevo = new InventarioLetras("");
+
+        for (int i = 0; i < letras.length; i++) {
+
+            int resta = this.letras[i] - otro.letras[i];
+
+            if (resta < 0) {
+
+                return null;
+            }
+
+            nuevo.letras[i] = resta;
+
+            if (resta > 0) {
+
+                nuevo.distintas++;
+            }
+
+            nuevo.total += resta;
+        }
+
+        return nuevo;
+    }
+}
